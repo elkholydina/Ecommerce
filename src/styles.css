@@ -1,0 +1,61 @@
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@import 'ngx-toastr/toastr';
+
+
+::selection{
+  user-select:none;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(236, 234, 234);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #000;
+  border-radius: 10px;
+}
+
+.swal-confirm-btn {
+  background-color: red !important; /* Tailwind bg-blue-500 */
+  color: white !important;
+}
+.swal-confirm-btn:hover {
+  background-color: rgb(182, 4, 4) !important; /* Tailwind bg-blue-600 */
+}
+
+.swal-confirm-btn2{
+   background-color: green !important; /* Tailwind bg-blue-500 */
+  color: white !important;
+}
+.swal-confirm-btn2:hover {
+  background-color: rgb(2, 73, 2) !important; /* Tailwind bg-blue-600 */
+}
+
+.toast-success {
+  background-color: #3b82f6 !important;
+  color: #fff !important;
+}
+
+.toast-success .toast-close-button {
+  color: #fff !important;
+}
+
+.loading{
+width: 100px;
+height: 100px;
+animation:  upDown 1.5s ease-in-out infinite; ;
+}
+@keyframes upDown {
+0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
