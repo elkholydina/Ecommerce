@@ -1,0 +1,93 @@
+@if(cartData.products?.length == 0 ){
+  <section class="w-[95%]  pt-[52px] md:w-[90%] h-[35rem] mx-auto mt-5 mb-4 rounded-lg overflow-hidden shadow-md">
+    <div class="flex flex-col items-center justify-center h-full text-center">
+      <img src="./imgs/tutti-shopping-basket-with-fruit-milk-and-wine-1 1.png"
+           class="object-contain w-48 sm:w-64 md:w-80 mx-auto"
+           alt="cart image" />
+      <h1 class="text-lg sm:text-xl md:text-2xl font-bold my-5">Your cart is Empty!</h1>
+      <app-button [title]="'Shop Now!'"></app-button>
+    </div>
+  </section>
+} @else {
+  <section class="w-[95%]  pt-[52px] md:w-[90%] mx-auto mt-5 mb-4 rounded-lg overflow-hidden shadow-md">
+    <div class="grid grid-cols-1 lg:grid-cols-12 lg:min-h-[28rem] gap-6">
+
+      <!-- Cart Items -->
+      <div class="lg:col-span-8 rounded-lg p-4 sm:p-6 bg-white dark:bg-gray-800">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
+          <h5 class="text-lg me-auto sm:text-xl font-semibold text-blue-500 relative before:w-4 before:translate-x-[-50%] before:translate-y-[-15%] before:rounded-sm before:h-[130%] before:bg-blue-500 before:absolute before:left-[-12px] before:top-0">
+            Cart Items
+          </h5>
+
+
+          <button class="text-white bg-gradient-to-r from-black via-blue-600 to-black hover:bg-gradient-to-br
+                         font-medium rounded-lg text-xs sm:text-sm px-3 py-1.5">
+            {{cartData.products?.length}} items
+          </button>
+        </div>
+
+        @for (item of cartData.products; track item._id) {
+          <div class="mt-4">
+            <div class="p-3 rounded-lg shadow-md border border-blue-200 sm:grid sm:grid-cols-12 gap-4">
+              <div class="sm:col-span-2 mb-3 sm:mb-0">
+                <img [src]="item.product.imageCover"
+                     class="w-full object-contain h-20 rounded-lg"
+                     [alt]="item.product.title">
+              </div>
+              <div class="sm:col-span-10 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div class="text-center sm:text-left">
+                  <h3 class="font-medium">{{item.product.title}}</h3>
+                  <span class="text-blue-500 text-sm sm:text-base">{{item.price * item.count}} EGP</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                  <div class="border border-blue-500 rounded-lg flex items-center space-x-4 px-3 py-1">
+                    <button (click)="updateProduct(item.product._id, item.count-1)" class="text-blue-500 cursor-pointer">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <span class="font-bold text-blue-500 ">{{item.count}}</span>
+                    <button (click)="updateProduct(item.product._id, item.count+1)" class="text-blue-500 cursor-pointer">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                  <button (click)="deleteSpecificProduct(item.product._id)" class="text-red-500 cursor-pointer">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Order Summary -->
+      <div class="lg:col-span-4 border-2 rounded-lg shadow-md border-blue-500 p-4 sm:p-6 bg-white dark:bg-gray-800 h-fit">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
+          <h5 class="text-lg sm:text-xl font-semibold text-blue-500 ">
+            Order Summary
+          </h5>
+          <button class="text-white bg-gradient-to-r from-black via-blue-600 to-black hover:bg-gradient-to-br
+                         font-medium rounded-lg text-xs sm:text-sm px-3 py-1.5">
+            Total: {{cartData.totalCartPrice}} EGP
+          </button>
+        </div>
+
+        <div class="grid grid-cols-3 sm:grid-cols-4 gap-3 mt-4">
+          @for (item of cartData.products; track item._id) {
+            <div class=" relative pt-4 mt-4">
+              <img class="object-contain rounded-lg w-full h-20"
+                   [src]="item.product.imageCover"
+                   [alt]="item.product.title">
+                                  <div class="absolute text-xs border-4 pt-1 border-white -top-2 right-0 text-white flex place-content-center rounded-full w-8 h-8 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 hover:bg-gradient-to-br">{{item.count}}</div>
+
+            </div>
+          }
+        </div>
+
+        <div class="text-center mt-6">
+          <app-button [title]="'Check Out'" [cart_id]="cartData._id || ''"></app-button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+}

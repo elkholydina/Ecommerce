@@ -1,0 +1,48 @@
+@if(orders.length == 0 ){
+  <section class="w-[95%]  pt-[52px] md:w-[90%] h-[35rem] mx-auto mt-5 mb-4 rounded-lg overflow-hidden shadow-md">
+    <div class="flex flex-col items-center justify-center h-full text-center">
+      <img src="./imgs/tutti-shopping-basket-with-fruit-milk-and-wine-1 1.png"
+           class="object-contain w-48 sm:w-64 md:w-80 mx-auto"
+           alt="cart image" />
+      <h1 class="text-lg sm:text-xl md:text-2xl font-bold my-5">No orders yet!</h1>
+      <app-button [title]="'Shop Now!'"></app-button>
+    </div>
+  </section>
+} @else {
+  <section class="w-[95%]  pt-[52px] md:w-[90%] mx-auto mt-5 mb-4 rounded-lg overflow-hidden shadow-md">
+    <div class="grid grid-cols-1 lg:grid-cols-8 xl:grid-cols-12 lg:min-h-[28rem] gap-6">
+      <!-- Order Summary -->
+      @for (order of orders; track $index) {
+        <div class="lg:col-span-6 border rounded-lg shadow-md border-blue-500/40 p-4 sm:p-6 bg-white dark:bg-gray-800 h-full">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
+          <h5 class="text-lg sm:text-xl font-semibold text-blue-500 ">
+            summary of order no: {{$index+1}}
+          </h5>
+          <div class="flex gap-4">
+            <button class="text-white bg-gradient-to-r from-black via-blue-600 to-black hover:bg-gradient-to-br
+                         font-medium rounded-lg text-xs sm:text-sm px-3 py-1.5">
+            Total: {{order.totalOrderPrice}} EGP
+          </button>
+            <button class="text-white bg-gradient-to-r from-black via-blue-600 to-black hover:bg-gradient-to-br
+                         font-medium rounded-lg text-xs sm:text-sm px-3 py-1.5">
+            Delivered: {{order.isDelivered? 'Yes' : 'No'}}
+          </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 sm:grid-cols-4 gap-3 mt-6">
+          @for (item of order.cartItems; track $index) {
+            <div class="relative">
+              <img class="object-contain rounded-lg w-full h-30"
+                 [src]="item.product.imageCover"
+                alt="image">
+               <div class="absolute text-xs border-4 pt-1 border-white -top-2 right-4 text-white flex place-content-center rounded-full w-8 h-8 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 hover:bg-gradient-to-br">{{item.count}}</div>
+            </div>
+
+          }
+            </div>
+        </div>
+      }
+      </div>
+  </section>
+}

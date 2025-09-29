@@ -1,0 +1,239 @@
+<section class="w-[95%] md:w-[90%] mx-auto py-5 mt-5 mb-4 pt-[52px]">
+ <owl-carousel-o [options]="mainSliderOption">
+     @for (slide of sliders; track $index) {
+      <ng-template carouselSlide>
+        <div
+    class="mx-auto w-full flex flex-col lg:flex-row items-center bg-black border border-gray-200 rounded-lg shadow-sm xl:w-[80%] h-[400px] dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+  >
+    <!-- IMAGE -->
+    <img
+       class="object-cover w-full lg:w-1/2 h-[50%] lg:h-full rounded-t-lg md:rounded-none md:rounded-s-lg"
+      [src]="slide.src"
+      [alt]="slide.alt"
+    />
+
+    <!-- CONTENT -->
+    <div
+      class="flex flex-col justify-between p-2 sm:p-10 md:p-5 lg:p-20 leading-relaxed text-center md:text-left"
+    >
+      <p
+        class="mb-2 mt-5 font-extrabold text-blue-500 dark:text-gray-400 text-sm sm:text-base md:text-lg"
+      >
+        {{slide.title}}
+      </p>
+
+      <h5
+        class="mb-5 text-lg sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-white dark:text-white"
+      >
+        {{slide.desc}}
+      </h5>
+      <app-link [content]="'Shop Now'"></app-link>
+    </div></div>
+      </ng-template>
+    }
+  </owl-carousel-o>
+
+</section>
+
+
+<section class="w-[95%] md:w-[90%] mx-auto py-5  mb-8">
+  <app-title [title]="'Categories'" [background]="'before:bg-blue-500'" [color]="'text-blue-500'"></app-title>
+  <owl-carousel-o [options]="CategoriesOption">
+
+    @for (category of categories; track category._id) {
+      <ng-template carouselSlide [id]="category._id">
+        <div>
+          <img [src]="category.image" [alt]="category.name" [title]="category.name" class="w-[20%] h-[250px] object-cover" >
+          <h5 class="text-gray-500 font-bold">{{category.name}}</h5>
+        </div>
+      </ng-template>
+    }
+
+  </owl-carousel-o>
+</section>
+
+
+
+<section class="w-[95%] md:w-[90%] mx-auto py-5  mb-8">
+  <section class="new select-none">
+    <app-title [title] = "'Best Sellers'" [color] = "'text-blue-500'" [background]="'before:bg-blue-500'"></app-title>
+    <div
+      class="w-full flex flex-row flex-nowrap space-x-4 overflow-auto  pb-4 pt-2 px-2"
+    >
+      @for(product of products.slice(0 , 20) ; track product._id ){ @if($even){
+      <app-card [product]="product" [status]="'Top'"></app-card>
+      } }
+    </div>
+  </section>
+</section>
+
+
+<section class="w-[95%] md:w-[90%] mx-auto py-5 mb-8">
+  <div
+    class="flex flex-col md:flex-row items-center bg-white border border-gray-200 rounded-lg shadow-sm w-full dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+  >
+    <!-- IMAGE -->
+    <img
+      class="object-cover w-full md:w-1/2 h-60 md:h-full rounded-t-lg md:rounded-none md:rounded-s-lg"
+      src="./imgs/img1.png"
+      alt="Sale Banner"
+    />
+
+    <!-- CONTENT -->
+    <div
+      class="flex flex-col justify-between p-6 sm:p-10 md:p-16 lg:p-20 leading-relaxed text-center md:text-left"
+    >
+      <p
+        class="mb-2 font-extrabold text-blue-500 dark:text-gray-400 text-sm sm:text-base md:text-lg"
+      >
+        SALE UP TO 35% OFF
+      </p>
+
+      <h5
+        class="mb-4 text-lg sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 dark:text-white"
+      >
+        HUNDREDS OF <br />
+        NEW LOWER PRICES!
+      </h5>
+
+      <p
+        class="mb-4 text-sm sm:text-base font-normal text-gray-700 dark:text-gray-400"
+      >
+        Upgrade your style without breaking the bank!
+        <br class="hidden sm:block" />
+        Discover top-quality products at unbeatable prices, only for a limited
+        time. <br class="hidden md:block" />
+        Fast delivery & secure checkout — shop your favorites before the sale
+        ends!
+      </p>
+
+      <app-link [content]="'Shop Now'"></app-link>
+    </div>
+  </div>
+</section>
+
+<section class="w-[95%] md:w-[90%] mx-auto py-5 mt-5 mb-8">
+  <section class="new select-none">
+    <app-title [background]="'before:bg-red-600'" [color]="'text-red-600'" [title]="'Mega Sale'"></app-title>
+    <div
+      class="w-full flex flex-row flex-nowrap space-x-4 overflow-auto pb-4 pt-2 px-2"
+    >
+      @for(product of products.slice(0,20) ; track product._id  ){ @if($odd){
+      <app-card [product]="product" [status]="'sale'"></app-card>
+      } }
+    </div>
+  </section>
+</section>
+
+<section class="w-[95%] md:w-[90%] mx-auto py-3 mt-5 ">
+  <app-title [title]="'New Arrivals'" [color]="'text-blue-500'" [background]="'before:bg-blue-500'"></app-title>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+      <img
+        class="h-[500px] w-full object-scale-down rounded-lg bg-black"
+        src="./imgs/ps5-slim-goedkope-playstation_large 1.png"
+        alt="PlayStation"
+      />
+      <div class="text-gray-100 -translate-y-30 translate-x-3">
+        <h5 class="text-white uppercase font-bold">play station 5</h5>
+        <p>black and white version of PS5 coming out on sale!</p>
+       <app-link [content]="'Shop Now'"></app-link>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <div class="relative">
+        <img
+          class="h-[240px] w-full object-cover rounded-lg bg-black"
+          src="./imgs/attractive-woman-wearing-hat-posing-black-background 1.png"
+          alt="Woman"
+        />
+        <div class="absolute bottom-8 left-3 text-gray-100">
+          <h5 class="text-white uppercase font-bold"> Woman's Collections</h5>
+          <p>Featured woman collections that give you another vibe!</p>
+          <app-link [content]="'Shop Now'"></app-link>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <img
+            class="h-[240px] w-full object-scale-down rounded-lg bg-black"
+            src="./imgs/speakers.png"
+            alt="Speakers"
+          />
+          <div class="text-gray-100 -translate-y-30 translate-x-3">
+            <h5 class="text-white uppercase font-bold">Speakers</h5>
+            <p>Amazon wireless Speakers!</p>
+           <app-link [content]="'Shop Now'"></app-link>
+          </div>
+        </div>
+        <div>
+          <img
+            class="h-[240px] w-full object-scale-down rounded-lg bg-black"
+            src="./imgs/perfume.png"
+            alt="Perfume"
+          />
+          <div class="text-gray-100 -translate-y-30 translate-x-3">
+            <h5 class="text-white uppercase font-bold">Perfumes</h5>
+            <p>GUCCI intense OUD EDP!</p>
+            <app-link [content]="'Shop Now'"></app-link>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="w-[95%] md:w-[90%] mx-auto py-5 mb-20">
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:px-20">
+    <div
+      class="p-8 text-black text-center rounded-0 dark:bg-gray-800 dark:border-gray-700"
+    >
+      <i class="fa-solid fa-truck-fast text-4xl mb-2 "></i>
+      <h5 class="mb-1 text-2xl font-semibold tracking-tight dark:text-white">
+        Free Shipping
+      </h5>
+
+      <p class="font-normal text-gray-500 dark:text-gray-400">
+        order above $200
+      </p>
+    </div>
+    <div
+      class="p-8 text-black text-center rounded-0 dark:bg-gray-800 dark:border-gray-700"
+    >
+      <i class="fa-solid fa-money-bill text-4xl mb-2 "></i>
+      <h5 class="mb-1 text-2xl font-semibold tracking-tight dark:text-white">
+        Mony-Back
+      </h5>
+
+      <p class="font-normal text-gray-500 dark:text-gray-400">
+        30 Days guarantee
+      </p>
+    </div>
+    <div
+      class="p-8 text-black text-center  rounded-0 dark:bg-gray-800 dark:border-gray-700"
+    >
+      <i class="fa-solid fa-lock text-4xl mb-2"></i>
+      <h5 class="mb-1 text-2xl font-semibold tracking-tight dark:text-white">
+        Secure Payment
+      </h5>
+
+      <p class="font-normal text-gray-500 dark:text-gray-400">
+        secured by stripe
+      </p>
+    </div>
+    <div
+      class="p-8 text-black text-center  rounded-0 dark:bg-gray-800 dark:border-gray-700"
+    >
+      <i class="fa-solid fa-phone text-4xl mb-2"></i>
+      <h5 class="mb-1 text-2xl font-semibold tracking-tight dark:text-white">
+        24/7 Support
+      </h5>
+
+      <p class="font-normal text-gray-500 dark:text-gray-400">
+        Phone and Email support
+      </p>
+    </div>
+  </div>
+</section>

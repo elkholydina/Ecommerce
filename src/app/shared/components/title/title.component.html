@@ -1,0 +1,17 @@
+<div class="flex justify-between">
+      <h5
+        class="text-xl mb-5 font-semibold before:w-4 before:rounded-sm before:h-[130%] before:absolute relative before:translate-x-[-150%] before:translate-y-[-15%] before:bg-blue-500 dark:text-white"
+      [class] = 'color' [class]="background"
+        >
+        {{title}}
+      </h5>
+      <a
+        routerLink="/shop"
+        class="text-smfont-semibold dark:text-white underline underline-offset-4" [class] = 'color'
+        ><span
+          >More Products
+          <i
+            class="fa-solid fa-arrow-right translate-y-.5 underline underline-offset-4"
+          ></i></span
+      ></a>
+    </div>

@@ -1,0 +1,314 @@
+<section class="w-[95%] md:w-[70%] mx-auto py-5 mt-20 mb-15">
+  <div class="w-full">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+      <div
+        class="flex md:flex-col md:col-span-1 gap-2 order-2 md:order-1 overflow-x-auto md:overflow-visible"
+      >
+        @for(img of item.data.images.slice(0,4) ; track $index){
+        <div
+          class="relative w-20 h-20 cursor-pointer flex-shrink-0"
+          (click)="getImage($index)"
+        >
+          <img
+            [src]="img"
+            [alt]="item.data.title"
+            class="w-full h-full object-cover rounded"
+          />
+        </div>
+        }
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="flex flex-col col-span-11 order-1 md:order-2">
+        <div
+          class="flex flex-col md:flex-row bg-white border border-gray-200 shadow-sm rounded-lg dark:border-gray-700 dark:bg-gray-800"
+        >
+          <!-- IMAGE -->
+          <img
+            class="object-cover w-full md:w-2/5 h-60 md:h-[28rem] rounded-t-lg md:rounded-s-lg"
+            [src]="typeof imgIndex == 'string' ? item.data.imageCover : item.data.images[imgIndex]"
+            [alt]="item.data.title"
+          />
+
+          <!-- CONTENT -->
+          <div
+            class="flex flex-col justify-between md:w-3/5 p-4 md:p-6 leading-relaxed text-center md:text-left"
+          >
+            <h1 class="text-2xl md:text-4xl font-bold mb-3">
+              {{ item.data.title }}
+            </h1>
+            <h5
+              class="text-lg md:text-xl font-semibold tracking-tight text-blue-500 dark:text-white mb-2"
+            >
+              {{ item.data.category.name }}
+            </h5>
+
+            <!-- RATING -->
+            <div class="flex items-center justify-center md:justify-start mb-3">
+              <div
+                class="flex items-center space-x-1 rtl:space-x-reverse text-blue-500"
+              >
+                <svg
+                  class="w-4 h-4 text-blue-500"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 22 20"
+                >
+                  <path
+                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+                  />
+                </svg>
+                <svg
+                  class="w-4 h-4 text-blue-500"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 22 20"
+                >
+                  <path
+                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+                  />
+                </svg>
+                <svg
+                  class="w-4 h-4 text-blue-500"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 22 20"
+                >
+                  <path
+                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+                  />
+                </svg>
+                <svg
+                  class="w-4 h-4 text-blue-500"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 22 20"
+                >
+                  <path
+                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+                  />
+                </svg>
+                <svg
+                  class="w-4 h-4 text-blue-500"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 22 20"
+                >
+                  <path
+                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+                  />
+                </svg>
+              </div>
+              <span
+                class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-sm ms-2"
+              >
+                {{ item.data.ratingsAverage }}
+              </span>
+            </div>
+
+            <!-- PRICE -->
+            <div class="my-3">
+              <button
+                type="button"
+                class="w-full md:w-auto text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-5 py-2.5"
+              >
+                {{item.data.price}} EGP
+
+              </button>
+            </div>
+
+            <!-- DESCRIPTION -->
+            <p
+              class="text-sm md:text-base font-medium text-gray-700 dark:text-gray-300 mb-4"
+            >
+              {{ item.data.description }}
+            </p>
+
+            <!-- BUTTON -->
+            <div class="flex justify-center md:justify-end">
+              <app-button
+                title="Add to Cart"
+                [product_id]="item.data._id"
+              ></app-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="w-[95%] md:w-[70%] mx-auto py-5 mt-5 mb-20">
+  <app-title
+    [background]="'text-blue-500'"
+    [color]="'text-blue-500'"
+    [title]="'Reviews'"
+  ></app-title>
+
+  <div
+    class="w-full mt-4 p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-8 dark:bg-gray-800 dark:border-gray-700"
+  >
+    <div class="flex items-center justify-between mb-4">
+      <h5 class="text-xl font-bold leading-none text-blue-500 dark:text-white">
+        Latest Views
+      </h5>
+      <a
+        class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500 cursor-pointer"
+      >
+        View all
+      </a>
+    </div>
+
+    <div class="flow-root">
+      <ul
+        role="list"
+        class="divide-y divide-gray-200 dark:divide-gray-700 mx-auto"
+      >
+        <!-- Review Item -->
+        <li class="py-2 sm:py-4">
+          <div class="flex flex-col sm:flex-row sm:items-center">
+            <div class="flex items-center">
+              <img
+                class="w-8 h-8 rounded-full"
+                src="/imgs/image 46.png"
+                alt="Neil image"
+              />
+              <div class="flex-1 min-w-0 ms-4">
+                <p
+                  class="text-sm font-medium text-gray-900 truncate dark:text-white"
+                >
+                  Neil Sims
+                </p>
+                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                  email@windster.com
+                </p>
+              </div>
+            </div>
+            <div
+              class="mt-2 sm:mt-0 sm:ms-auto text-sm sm:text-base font-semibold text-gray-500 dark:text-white"
+            >
+              very good product!
+            </div>
+          </div>
+        </li>
+
+        <!-- Review Item -->
+        <li class="py-2 sm:py-4">
+          <div class="flex flex-col sm:flex-row sm:items-center">
+            <div class="flex items-center">
+              <img
+                class="w-8 h-8 rounded-full"
+                src="/imgs/image 51.png"
+                alt="Bonnie image"
+              />
+              <div class="flex-1 min-w-0 ms-4">
+                <p
+                  class="text-sm font-medium text-gray-900 truncate dark:text-white"
+                >
+                  Bonnie Green
+                </p>
+                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                  email@windster.com
+                </p>
+              </div>
+            </div>
+            <div
+              class="mt-2 sm:mt-0 sm:ms-auto text-sm sm:text-base font-semibold text-gray-500 dark:text-white"
+            >
+              excellent!
+            </div>
+          </div>
+        </li>
+
+        <!-- Review Item -->
+        <li class="py-2 sm:py-4">
+          <div class="flex flex-col sm:flex-row sm:items-center">
+            <div class="flex items-center">
+              <img
+                class="w-8 h-8 rounded-full"
+                src="/imgs/image 47.png"
+                alt="Michael image"
+              />
+              <div class="flex-1 min-w-0 ms-4">
+                <p
+                  class="text-sm font-medium text-gray-900 truncate dark:text-white"
+                >
+                  Michael Gough
+                </p>
+                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                  email@windster.com
+                </p>
+              </div>
+            </div>
+            <div
+              class="mt-2 sm:mt-0 sm:ms-auto text-sm sm:text-base font-semibold text-gray-500 dark:text-white"
+            >
+              good
+            </div>
+          </div>
+        </li>
+
+        <!-- Review Item -->
+        <li class="py-2 sm:py-4">
+          <div class="flex flex-col sm:flex-row sm:items-center">
+            <div class="flex items-center">
+              <img
+                class="w-8 h-8 rounded-full"
+                src="/imgs/image 51.png"
+                alt="Lana image"
+              />
+              <div class="flex-1 min-w-0 ms-4">
+                <p
+                  class="text-sm font-medium text-gray-900 truncate dark:text-white"
+                >
+                  Lana Byrd
+                </p>
+                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                  email@windster.com
+                </p>
+              </div>
+            </div>
+            <div
+              class="mt-2 sm:mt-0 sm:ms-auto text-sm sm:text-base font-semibold text-gray-500 dark:text-white"
+            >
+              good product
+            </div>
+          </div>
+        </li>
+
+        <!-- Review Item -->
+        <li class="py-2 sm:py-4">
+          <div class="flex flex-col sm:flex-row sm:items-center">
+            <div class="flex items-center">
+              <img
+                class="w-8 h-8 rounded-full"
+                src="/imgs/image 47.png"
+                alt="Thomas image"
+              />
+              <div class="flex-1 min-w-0 ms-4">
+                <p
+                  class="text-sm font-medium text-gray-900 truncate dark:text-white"
+                >
+                  Thomas Lean
+                </p>
+                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                  email@windster.com
+                </p>
+              </div>
+            </div>
+            <div
+              class="mt-2 sm:mt-0 sm:ms-auto text-sm sm:text-base font-semibold text-gray-500 dark:text-white"
+            >
+              I will buy it again, it's perfect!
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

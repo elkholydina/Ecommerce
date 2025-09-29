@@ -1,0 +1,1 @@
+import{a as i}from"./chunk-IRFL4NMA.js";import{l as n}from"./chunk-5DE6OTCK.js";import{$ as o,W as r}from"./chunk-6HMZLBRA.js";var a=class t{HttpClient=o(n);getAllProducts(e=1){return this.HttpClient.get(i.baseUrl+`products?page=${e}`)}static \u0275fac=function(p){return new(p||t)};static \u0275prov=r({token:t,factory:t.\u0275fac,providedIn:"root"})};export{a};

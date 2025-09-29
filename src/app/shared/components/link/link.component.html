@@ -1,0 +1,9 @@
+
+      @if(content == "Details"){
+        <a class="text-sm text-blue-500 font-semibold  dark:text-white underline underline-offset-4" [routerLink]="['/details' , slug , id]"
+        ><span>{{content}}</span> <i class="fa-solid fa-arrow-right underline underline-offset-4 translate-y-.5 "></i></a >
+      }@else{
+        <a routerLink="/shop" class="text-sm text-blue-500 font-semibold  dark:text-white underline underline-offset-4"
+        ><span>{{content}}</span> <i class="fa-solid fa-arrow-right underline underline-offset-4 translate-y-.5 "></i></a
+      >
+      }

@@ -1,0 +1,12 @@
+@if(title == 'Add to Cart'){
+  <button (click)="addToCart(product_id)" class="w- cursor-pointer rounded-lg disabled:bg-gray-400 disabled:cursor-not-allowed text-white bg-black   font-medium rounded-0 text-sm px-18 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{title}}</button>
+}@else if (title == 'Check Out') {
+    <button [routerLink]="['/check-out' , cart_id]"  class="w- cursor-pointer rounded-lg disabled:bg-gray-400 disabled:cursor-not-allowed text-white bg-black   font-medium rounded-0 text-sm px-18 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{title}}</button>
+
+}@else if(title == 'Shop Now!' || title == "Shop again!"){
+    <button routerLink="/shop" class="w- cursor-pointer rounded-lg disabled:bg-gray-400 disabled:cursor-not-allowed text-white bg-black   font-medium rounded-0 text-sm px-18 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{title}}</button>
+}
+@if(title == 'Go to Home Page'){
+      <button routerLink="/home" class="w- cursor-pointer rounded-lg disabled:bg-gray-400 disabled:cursor-not-allowed text-white bg-black   font-medium rounded-0 text-sm px-18 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{title}}</button>
+
+}

@@ -1,0 +1,170 @@
+<nav class="border-grey-200 shadow-grey-900 dark:bg-gray-900 fixed top-0 left-0 right-0 z-50 bg-white ">
+  <div
+    class="w-[95%] md:w-[90%] mx-auto flex flex-col lg:flex-row lg:items-center"
+  >
+    <div class="flex justify-between items-center w-full lg:w-auto">
+      <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img
+          src="./imgs/logo.png"
+          class="w-[130px] self-center"
+          alt="oneStop logo"
+        />
+      </a>
+      <button
+        (click)="toggleMenu()"
+        type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+      >
+        <span class="sr-only">Open main menu</span>
+        <svg
+          class="w-5 h-5"
+          aria-hidden="true"
+          fill="none"
+          viewBox="0 0 17 14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15"
+          />
+        </svg>
+      </button>
+    </div>
+
+
+
+    <div
+       [class.hidden]="!isMenuOpen"
+      class=" w-full px-10 text-sm lg:flex lg:justify-between lg:items-center mt-2 lg:mt-0"
+      id="navbar-default"
+    >
+    @if(isLogin == false){
+        <ul
+        class="flex bg-gray-100 lg:bg-white flex-col lg:flex-row font-medium lg:mx-auto -space-x-1 p-4 lg:p-0 border border-gray-100 rounded-lg lg:border-0 dark:bg-gray-800 lg:dark:bg-gray-900 dark:border-gray-700"
+      >
+        <li>
+          <a
+             (click)="toggleMenu()"
+            routerLink="/home" routerLinkActive="text-blue-500"
+            class="block py-2 px-3 text-black dark:text-white md:dark:text-black-500"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/shop" routerLinkActive="text-blue-500"
+            (click)="toggleMenu()"
+            class="block py-2 px-3 text-black dark:text-white md:dark:text-black-500"
+            >Shop</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/wish-list" routerLinkActive="text-blue-500"
+            (click)="toggleMenu()"
+            class="block py-2 px-3 text-black dark:text-white md:dark:text-black-500"
+            >Wish list</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/brands" routerLinkActive="text-blue-500"
+            (click)="toggleMenu()"
+            class="block py-2 px-3 text-black dark:text-white md:dark:text-black-500"
+            >Shop by Brand</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/categories" routerLinkActive="text-blue-500"
+            (click)="toggleMenu()"
+            class="block py-2 px-3 text-black dark:text-white md:dark:text-black-500"
+            >Shop by Category</a
+          >
+        </li>
+        <li>
+          <a
+             routerLink="/our-story" routerLinkActive="text-blue-500"
+             (click)="toggleMenu()"
+            class="block py-2 px-3 text-black dark:text-white md:dark:text-black-500"
+            >Our Story</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/contact-us" routerLinkActive="text-blue-500"
+            (click)="toggleMenu()"
+            class="block py-2 px-3 text-black dark:text-white md:dark:text-black-500"
+            >Contact Us</a
+          >
+        </li>
+      </ul>
+    }
+
+      <ul [class]="{'ms-auto':isLogin}"
+        class="flex flex-col bg-gray-100 lg:bg-white  lg:flex-row lg:space-x-2 px-10 lg:p-0 border border-gray-100 rounded-lg lg:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 mt-1"
+      >
+      @if(isLogin == false){
+         <li>
+          <a
+            routerLink="/cart" routerLinkActive="text-blue-500"
+            (click)="toggleMenu()"
+            class="block py-2 dark:text-white md:dark:text-black-500 text-2xl"
+            ><i class="fa-solid fa-cart-shopping"></i></a
+          >
+
+        </li>
+        <li>
+          <a
+            routerLink="/allorders" routerLinkActive="text-blue-500"
+            (click)="toggleMenu()"
+            class="block py-2 lg:px-3  dark:text-white md:dark:text-black-500 text-2xl"
+            ><i class="fa-solid fa-cart-flatbed-suitcase"></i></a
+          >
+        </li>
+
+       @if(isLogged){
+         <li>
+          <a
+          (click)="signOut()"
+          (click)="toggleMenu()"
+                      class="block py-2 text-red-700 dark:text-white text-2xl md:dark:text-black-500 cursor-pointer"
+            ><i class="fa-solid fa-right-from-bracket" title="signout"></i
+          ></a>
+        </li>
+       }@else {
+              <li>
+          <a
+          routerLink="/login"
+          (click)="toggleMenu()"
+            class="block py-2 dark:text-white text-2xl md:dark:text-black-500 cursor-pointer"
+            ><i class="fa-solid fa-circle-user"></i></a>
+        </li>
+
+       }
+
+      }@else{
+        <li>
+          <a
+            routerLink="/login"
+            (click)="toggleMenu()"
+            class="block py-2 mr-5 text-black md:text-black dark:text-white text-xl md:dark:text-black-500"
+            ><i class="fa-solid fa-right-to-bracket ml-auto" title="login"></i
+          ></a>
+        </li>
+        <li>
+          <a
+            routerLink="/register"
+            (click)="toggleMenu()"
+            class="block py-2  text-black md:text-black dark:text-white text-xl md:dark:text-black-500"
+            ><i class="fa-solid fa-registered" title="register"></i></a>
+        </li>
+      }
+
+      </ul>
+    </div>
+  </div>
+</nav>
